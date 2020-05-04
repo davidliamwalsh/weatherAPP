@@ -1,2 +1,2 @@
-# weatherAPP
-creating the popular weather app for API practice
+# react-app
+front-end for rails app
