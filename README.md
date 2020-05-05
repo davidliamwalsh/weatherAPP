@@ -1,2 +1,2 @@
-# react-app
-front-end for rails app
+# weather app
+api testing
