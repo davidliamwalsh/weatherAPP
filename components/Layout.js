@@ -4,9 +4,9 @@ import '../scss/application.scss'
 
 class Layout extends Component {
   render () {
-    return <div className='container'>
+    return <>
       { this.props.children }
-    </div>
+    </>
   }
 }
 
