@@ -1,5 +1,5 @@
 import { Component } from 'react'
-
+import Axios from 'axios'
 import Layout from '../components/Layout'
 
 class Index extends Component {
@@ -24,7 +24,15 @@ class Index extends Component {
         this.setState({
           coords: newCoords
         })
+
+        // api call
+        Axios.get(`http://api.weatherstack.com/current?access_key=${process.env.WEATHER_API_KEY}&query=${this.state.coords.latitude},${this.state.coords.longitude}`).then(res => {
+          console.log(res)
+        })
+
       })
+    } else {
+      console.log('error')
     }
   }
 
