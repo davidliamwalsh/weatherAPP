@@ -1,0 +1,16 @@
+.c-container {
+  width: 90vw;
+  margin: auto;
+  max-width: 1000px;
+
+  &__loader {
+    margin-top: 20vh;
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .c-container {
+    width: 80vw;
+  }
+}

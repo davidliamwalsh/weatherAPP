@@ -3,17 +3,24 @@ import Axios from 'axios'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
 import WeatherMain from '../components/WeatherMain'
+import { Facebook } from 'react-content-loader'
 
 class Index extends Component {
 
-  state = {
-    coords: {
-      latitude: 45,
-      longitude: 60
-    },
-    data: {},
-    imputData: ''
+  constructor(props){
+    super(props)
+    this.state = {
+       loading: true,
+       coords: {
+        latitude: 45,
+        longitude: 60
+      },
+      data: {},
+      imputData: ''
+    }
   }
+ 
+ 
 
   // get device location
   componentDidMount() {
@@ -30,7 +37,8 @@ class Index extends Component {
         })
 
         // api call
-        Axios.get(`http://api.weatherstack.com/current?access_key=${process.env.WEATHER_API_KEY}&query=${this.state.coords.latitude},${this.state.coords.longitude}`).then(res => {
+        Axios.get(`http://api.weatherstack.com/current?access_key=${process.env.WEATHER_API_KEY}&query=${this.state.coords.latitude},${this.state.coords.longitude}`)
+        .then(res => {
 
           let weatherData = {
             location: res.data.location.name,
@@ -44,9 +52,11 @@ class Index extends Component {
             humidity: res.data.current.humidity,
             img: res.data.current.weather_icons
           }
+          console.log(res)
           this.setState({ data:weatherData })
         })
-
+        .then(this.setState({ loading: false }))
+        
       })
     } else {
       console.log('error')
@@ -74,15 +84,26 @@ class Index extends Component {
         humidity: res.data.current.humidity,
         img: res.data.current.weather_icons
       }
+
+      
       this.setState({ data:weatherData })
     })
   }
 
   render () {
-    return <>
+
+    const MyFacebookLoader = () => <Facebook />
+
+    return <div className="c-container">
       <Navbar changeWeather = {this.changeWeather} changeRegion={this.change} />
-      <WeatherMain weatherData = {this.state.data} />
-    </>
+      {this.state.loading ? (
+        <div className="c-container__loader">
+          <MyFacebookLoader />
+        </div>
+      ) : (
+        <WeatherMain weatherData = {this.state.data} />
+      )}
+    </div>
   }
 }
 

@@ -7,4 +7,10 @@
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 12px;
+  height: 100vh;
+  background: linear-gradient(to right, #AA076B,#61045F);
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
