@@ -1,0 +1,40 @@
+.c-navbar {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+
+  &__title {
+    font-size: 24px;
+    color: white;
+  }
+
+  &__input {
+
+    &--box {
+      background:none;
+      border:none;
+      border-bottom: 1px solid white;
+      padding: 2px 0;
+      color: white;
+      font-size: 16px;
+      font-weight: 200;
+
+      &::placeholder {
+        font-size: 16px;
+        color: grey;
+        font-weight: 200;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .c-navbar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: none;
+    
+  }
+}
