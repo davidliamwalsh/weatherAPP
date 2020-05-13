@@ -16,7 +16,7 @@ class Index extends Component {
         longitude: 60
       },
       data: {},
-      imputData: ''
+      inputData: ''
     }
   }
  
@@ -85,7 +85,6 @@ class Index extends Component {
         img: res.data.current.weather_icons
       }
 
-      
       this.setState({ data:weatherData })
     })
   }
