@@ -20,8 +20,6 @@ class Index extends Component {
     }
   }
  
- 
-
   // get device location
   componentDidMount() {
     
